@@ -22,7 +22,7 @@ function Charts() {
 
   useEffect(()=>{
        const getLifeData = async()=>{
-        const response = await fetch('http://localhost:4000/api/life/country/62d42af7e3e0c2d38a33e466')
+        const response = await fetch(process.env.REACT_APP_SITE_URL+'/api/life/country/62d42af7e3e0c2d38a33e466')
         const json = await response.json()
            if(response.ok) {
                 setCountryData(json)
@@ -38,7 +38,7 @@ function Charts() {
   const searchFn = async(e) =>{
           close(true); setKeywords(e)
           dispatch({type:'RESET_DATA'})
-          const response = await fetch(`http://localhost:4000/api/life/search?filterType=${select}&keyword=${e}`)
+          const response = await fetch(`${process.env.REACT_APP_SITE_URL}/api/life/search?filterType=${select}&keyword=${e}`)
           const json = await response.json()
           if(response.ok) {
             dispatch({type:'SET_DATA',payload:json})
@@ -80,7 +80,7 @@ useEffect(()=>{
 const fetchCountry = async(id)=>{
 
     close(false)
-    const response = await fetch('http://localhost:4000/api/life/country/'+id)
+    const response = await fetch(process.env.REACT_APP_SITE_URL+'/api/life/country/'+id)
     const json = await response.json()
        if(response.ok) {
             setCountryData(json)

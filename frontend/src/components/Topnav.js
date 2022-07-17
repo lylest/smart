@@ -13,7 +13,7 @@ function Topnav() {
     </div>
 
     <Drawer isOpen={open} 
-            title="Book infomation"
+            title="menu"
             size={DrawerSize.STANDARD}
             canOutsideClickClose={true} onClose={()=>close(prev=>!prev)}>
 

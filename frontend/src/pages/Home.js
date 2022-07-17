@@ -15,7 +15,7 @@ function Home() {
 
   useEffect(()=>{
        const getLifeData = async()=>{
-        const response = await fetch('http://localhost:4000/api/life?limit='+limit)
+        const response = await fetch(process.env.REACT_APP_SITE_URL+'/api/life?limit='+limit)
         const json = await response.json()
            if(response.ok) {
                 dispatch({type:'SET_DATA',payload:json})
@@ -30,7 +30,7 @@ function Home() {
 
   const searchFn = async(e) =>{
           dispatch({type:'RESET_DATA'})
-          const response = await fetch(`http://localhost:4000/api/life/search?filterType=${select}&keyword=${e}`)
+          const response = await fetch(`${process.env.REACT_APP_SITE_URL}/api/life/search?filterType=${select}&keyword=${e}`)
           const json = await response.json()
           if(response.ok) {
             dispatch({type:'SET_DATA',payload:json})
@@ -44,7 +44,7 @@ function Home() {
 
  const filterFn = async(filter)=>{
         dispatch({type:'RESET_DATA'})
-        const response = await fetch(`http://localhost:4000/api/life/filter?criteria=${filter}`)
+        const response = await fetch(`${process.env.REACT_APP_SITE_URL}/api/life/filter?criteria=${filter}`)
         const json = await response.json()
 
         if(response.ok) {
